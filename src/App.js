@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
+import Alert from 'react-bootstrap/Alert';
 import './App.css';
 
 class App extends React.Component {
@@ -64,6 +65,12 @@ class App extends React.Component {
         </fieldset>
         {this.state.displayImage && 
           <Image id="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=12`} alt={this.state.cityData.display_name} />
+        }
+        {this.state.error &&
+          <Alert>
+            <Alert.Heading variant='primary'>Error</Alert.Heading>
+            <p>{this.state.errorMessage}</p>
+          </Alert>
         }
       </>
     );
