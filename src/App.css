@@ -9,10 +9,15 @@ body {
 }
 
 .list-group, fieldset {
+  width: 240px;
   margin: 15px 0px;
 }
 
 .list-group-item {
+  margin-bottom: 4px;
+}
+
+#cityName {
   margin-bottom: 4px;
 }
 
