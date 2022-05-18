@@ -79,7 +79,7 @@ class App extends React.Component {
         }
         {this.state.error &&
           <Alert>
-            <Alert.Heading variant='primary'>{this.state.errorCode}</Alert.Heading>
+            <Alert.Heading variant='danger'>{this.state.errorCode}</Alert.Heading>
             <p>{this.state.errorMessage}</p>
           </Alert>
         }
