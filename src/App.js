@@ -5,16 +5,18 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
+import Weather from './Weather';
 import './App.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cityData: [],
+      cityData: {},
       cityName: '',
       error: false,
-      displayImage: false
+      displayMap: false,
+      weatherData: []
     }
   }
 
@@ -22,18 +24,22 @@ class App extends React.Component {
     e.preventDefault();
     try {
       let cityData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.cityName}&format=json`);
+      let weatherData = await axios.get(`http://localhost:3001/weather?cityName=${this.state.cityName}`)
+      console.log('City Data ', cityData);
+      console.log('Weather Data ', weatherData.data);
       this.setState({
         error: false,
-        displayImage: true,
+        displayMap: true,
         cityData: cityData.data[0],
+        weatherData: weatherData.data,
       });
-      console.log(cityData.data[0]);
     } catch (error) {
       console.log('Error: ', error);
       console.log('Error Message: ', error.message)
       this.setState({
         error: true,
-        displayImage: false,
+        displayMap: false,
+        errorCode: error.code,
         errorMessage: error.message
       });
     }
@@ -63,12 +69,17 @@ class App extends React.Component {
             <Button type="submit">Explore!</Button>
           </Form>
         </fieldset>
-        {this.state.displayImage && 
-          <Image id="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=12`} alt={this.state.cityData.display_name} />
+        {this.state.displayMap &&
+          <>
+            <Image id="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=12`} alt={this.state.cityData.display_name} />
+            {this.state.weatherData !== 'No Weather' ?
+              <Weather data={this.state.weatherData}></Weather> :
+              <p>Weather not found for this location</p>}
+          </>
         }
         {this.state.error &&
           <Alert>
-            <Alert.Heading variant='primary'>Error</Alert.Heading>
+            <Alert.Heading variant='primary'>{this.state.errorCode}</Alert.Heading>
             <p>{this.state.errorMessage}</p>
           </Alert>
         }
