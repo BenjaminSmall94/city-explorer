@@ -28,6 +28,8 @@ Sam Brindle helped me get the map to display.
 
 ### Time Estimates
 
+#### Day 1
+
 1. Feature Task #1
    - Name: Set up your React repository & API keys.
    - Estimated Time: 40 min
@@ -56,3 +58,51 @@ Sam Brindle helped me get the map to display.
    - End: May 16, 2022 6:45pm
    - Actual Time: 30 min
    - Comments: I actually worked on this one progressively the whole time, but then focused on it at the end.
+
+#### Day 2
+
+1. Feature Task #1
+   - Name: Set up your Server Repository.
+   - Estimated Time: 45 min
+   - Start: May 17, 2022 4:45pm
+   - End: May 17, 2022 5:15
+   - Actual Time: 30 min
+
+2. Feature Task #2
+   - Name: Capture Weather Data based on Local API call.
+   - Estimated Time: 1 hr
+   - Start: May 17, 2022 5:15pm
+   - End: May 17, 2022 7:25pm
+   - Actual Time: 2 hr 10 min
+
+3. Feature Task #3
+   - Name: Error Handling.
+   - Estimated Time: 30 min
+   - Start: May 17, 2022 11:10pm
+   - End: May 17, 2022 11:35pm
+   - Actual Time: 25 min
+   - Comments: I actually worked on this one progressively the whole time, but then focused on it at the end.
+
+#### Day 3
+
+1. Feature Task #1
+   - Name: Switch the weather Data from local data to live data.
+   - Estimated Time: 1 hr
+   - Start: May 18, 2022 7:00pm
+   - End: May 18, 2022 9:00pm
+   - Actual Time: 2-hr min
+
+2. Feature Task #2
+   - Name: Integrate MovieDB to show Movie Data.
+   - Estimated Time: 1 hr
+   - Start: May 18, 2022 9:00pm
+   - End: May 18, 2022 10:30pm
+   - Actual Time: 1 hr 30 min
+
+3. Feature Task #3
+   - Name: Publish and Deploy the site.
+   - Estimated Time: 30 min
+   - Start: May 18, 2022 10:30pm
+   - End: May 18, 2022 10:45pm
+   - Actual Time: 15 min
+   - Comments: I actually worked on this one a lot yesterday, but worked on it again today at the end.
