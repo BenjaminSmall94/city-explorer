@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
 import Weather from './Weather';
+import Movies from './Movies';
 import './App.css';
 
 class App extends React.Component {
@@ -16,20 +17,23 @@ class App extends React.Component {
       cityName: '',
       error: false,
       displayMap: false,
-      weatherData: []
+      weatherData: [],
+      movieData: []
     }
   }
 
   requestCityInfo = async (e) => {
     e.preventDefault();
     try {
-      let cityData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.cityName}&format=json`);
-      let weatherData = await axios.get(`${process.env.REACT_APP_SERVER}/weather?cityName=${this.state.cityName}`)
+      let cityData = await Axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.cityName}&format=json`);
+      let weatherData = await Axios.get(`${process.env.REACT_APP_SERVER}/weather?latitude=${cityData.data[0].lat}&longitude=${cityData.data[0].lon}`);
+      let movieData = await Axios.get(`${process.env.REACT_APP_SERVER}/movies?title=${this.state.cityName}`);
       this.setState({
         error: false,
         displayMap: true,
         cityData: cityData.data[0],
         weatherData: weatherData.data,
+        movieData: movieData.data,
       });
     } catch (error) {
       console.log('Error: ', error);
@@ -70,9 +74,8 @@ class App extends React.Component {
         {this.state.displayMap &&
           <>
             <Image id="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=12`} alt={this.state.cityData.display_name} />
-            {this.state.weatherData !== 'No Weather' ?
-              <Weather data={this.state.weatherData}></Weather> :
-              <p>Weather not found for this location</p>}
+            <Weather data={this.state.weatherData}></Weather>
+            <Movies data={this.state.movieData}></Movies>
           </>
         }
         {this.state.error &&
