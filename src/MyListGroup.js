@@ -1,7 +1,7 @@
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-class MyListGroup extends React {
+class MyListGroup extends React.Component {
 
   render() {
     return (

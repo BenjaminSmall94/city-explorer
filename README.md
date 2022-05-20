@@ -120,3 +120,20 @@ Sam Brindle helped me get the map to display.
    - End: May 18, 2022 10:45pm
    - Actual Time: 15 min
    - Comments: I actually worked on this one a lot yesterday, but worked on it again today at the end.
+
+#### Day 4
+
+1. Feature Task #1
+   - Name: Switch the weather Data from local data to live data.
+   - Estimated Time: 1 hr
+   - Start: May 18, 2022 7:00pm
+   - End: May 18, 2022 9:00pm
+   - Actual Time: 2-hr min
+
+2. Feature Task #3
+   - Name: Publish and Deploy the site.
+   - Estimated Time: 30 min
+   - Start: May 18, 2022 10:30pm
+   - End: May 18, 2022 10:45pm
+   - Actual Time: 15 min
+   - Comments: I actually worked on this one a lot yesterday, but worked on it again today at the end.
