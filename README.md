@@ -31,6 +31,10 @@ This application allows the user to search for cities around the world and get i
 
 ![Web Request Diagram 4](img/API-Diagram-4.png)
 
+#### Day 5
+
+![Web Request Diagram 5](img/API-Diagram-5.png)
+
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
