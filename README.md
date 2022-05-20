@@ -15,8 +15,17 @@ This application allows the user to search for cities around the world and get i
 
 ### WRRC
 
-Day 3
-![Web Request Diagram](API-Diagram-3.png)
+#### Day 1
+
+![Web Request Diagram 1](API-Diagram-1.png)
+
+#### Day 2
+
+![Web Request Diagram 2](API-Diagram-2.png)
+
+#### Day 3
+
+![Web Request Diagram 3](API-Diagram-3.png)
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
