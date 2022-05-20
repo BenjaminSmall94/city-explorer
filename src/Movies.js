@@ -1,16 +1,22 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
+import Movie from './Movie';
 
 class Movies extends React.Component {
 
   render () {
-    return this.props.data.map((movie, idx) => {
-      return (
-        <article key ={idx}>
-          <h4>{idx + 1}. {movie.title}</h4>
-          <p>{movie.description}</p>
-        </article>
-      );
-    });
+
+    return (
+      <Table>
+        <tbody>
+          {this.props.data.map((movie, idx) => {
+            return (
+              <Movie key={idx} idx={idx} data={movie}></Movie>
+            );
+          })}
+        </tbody>
+      </Table>
+    );
   }
 }
 

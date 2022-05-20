@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
+import MyListGroup from './MyListGroup';
 import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
 import Weather from './Weather';
@@ -16,7 +16,7 @@ class App extends React.Component {
       cityData: {},
       cityName: '',
       error: false,
-      displayMap: false,
+      displayData: false,
       weatherData: [],
       movieData: []
     }
@@ -30,7 +30,7 @@ class App extends React.Component {
       let movieData = await Axios.get(`${process.env.REACT_APP_SERVER}/movies?title=${this.state.cityName}`);
       this.setState({
         error: false,
-        displayMap: true,
+        displayData: true,
         cityData: cityData.data[0],
         weatherData: weatherData.data,
         movieData: movieData.data,
@@ -40,7 +40,7 @@ class App extends React.Component {
       console.log('Error Message: ', error.message)
       this.setState({
         error: true,
-        displayMap: false,
+        displayData: false,
         errorCode: error.code,
         errorMessage: error.message
       });
@@ -54,26 +54,20 @@ class App extends React.Component {
   }
 
   render() {
-
+    let mapURL = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=12`;
+  
     return (
       <>
         <h1>City Explorer</h1>
-        <h2>{this.state.cityData.display_name}</h2>
-        <ListGroup>
-          <ListGroup.Item><strong>Latitude:</strong> {this.state.cityData.lat}</ListGroup.Item>
-          <ListGroup.Item><strong>Longitude:</strong> {this.state.cityData.lon}</ListGroup.Item>
-        </ListGroup>
-        <fieldset>
-          <legend>Choose City</legend>
-          <Form onSubmit={this.requestCityInfo}>
-            <Form.Label htmlFor="cityName">City </Form.Label>
-            <Form.Control type="text" id="cityName" onInput={this.handleCityInput}></Form.Control>
-            <Button type="submit">Explore!</Button>
-          </Form>
-        </fieldset>
-        {this.state.displayMap &&
+        <Form onSubmit={this.requestCityInfo} className="city-search">
+          <Form.Control type="text" id="city-name" placeholder ="Choose City" onInput={this.handleCityInput}></Form.Control>
+          <Button type="submit">Explore!</Button>
+        </Form>
+        {this.state.displayData &&
           <>
-            <Image id="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=12`} alt={this.state.cityData.display_name} />
+            <h2>{this.state.cityData.display_name}</h2>
+            <Image id="map" src={mapURL} alt={this.state.cityData.display_name} />
+            <MyListGroup lat={this.state.cityData.lat} lon={this.state.cityData.lon}></MyListGroup>
             <Weather data={this.state.weatherData}></Weather>
             <Movies data={this.state.movieData}></Movies>
           </>
