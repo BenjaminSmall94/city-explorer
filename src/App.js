@@ -33,7 +33,7 @@ class App extends React.Component {
         displayData: true,
         cityData: cityData.data[0],
         weatherData: weatherData.data,
-        movieData: movieData.data,
+        movieData: movieData.data
       });
     } catch (error) {
       console.log('Error: ', error);
