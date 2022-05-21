@@ -26,7 +26,7 @@ class App extends React.Component {
     e.preventDefault();
     try {
       let cityData = await Axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.cityName}&format=json`);
-      let weatherData = await Axios.get(`${process.env.REACT_APP_SERVER}/weather?latitude=${cityData.data[0].lat}&longitude=${cityData.data[0].lon}`);
+      let weatherData = await Axios.get(`${process.env.REACT_APP_SERVER}/weather?lat=${cityData.data[0].lat}&lon=${cityData.data[0].lon}`);
       let movieData = await Axios.get(`${process.env.REACT_APP_SERVER}/movies?title=${this.state.cityName}`);
       this.setState({
         error: false,

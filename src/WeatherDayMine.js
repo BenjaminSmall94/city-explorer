@@ -5,8 +5,8 @@ class WeatherDay extends React.Component {
   render() {
     return (
       <tr>
-        <td>{this.props.dailyWeather.time}</td>
-        <td>Forecast: {this.props.dailyWeather.forecast}</td>
+        <td>{this.props.dailyWeather.date}</td>
+        <td>{this.props.dailyWeather.description}</td>
       </tr>
     );
   }
